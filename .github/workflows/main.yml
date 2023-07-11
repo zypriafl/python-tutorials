@@ -15,6 +15,9 @@ permissions:
 jobs:
   test_and_build:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
@@ -33,7 +36,13 @@ jobs:
         run: |
           sphinx-build -b html . public
 
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
         with:
-          folder: public # The folder the action should deploy.
+          # Upload public repository
+          path: 'public'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
