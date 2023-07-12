@@ -9,8 +9,12 @@ on:
       - master
 
 # see https://github.com/JamesIves/github-pages-deploy-action/issues/1110#issuecomment-1117481234
+# see https://stackoverflow.com/a/74167257/5800596
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
   test_and_build:
