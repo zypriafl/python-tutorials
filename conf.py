@@ -17,7 +17,7 @@ author = 'Christopher Helm'
 html_title = 'Python Tutorials'
 # The full version, including alpha/beta/rc tags
 release = '0.1.0'
-html_baseurl  = 'https://atraining.github.io/python-tutorials/'
+html_baseurl = 'https://atraining.github.io/python-tutorials/'
 
 
 # -- General configuration ---------------------------------------------------
