@@ -1,16 +1,15 @@
 ---
 jupytext:
+  formats: ipynb,md:myst
   text_representation:
     extension: .md
     format_name: myst
-    format_version: '0.8'
-    jupytext_version: 1.4.1+dev
+    format_version: 0.13
+    jupytext_version: 1.14.7
 kernelspec:
   display_name: Python 3
   language: python
   name: python3
-mystnb:
-  execution_timeout: 60
 ---
 
 # NaN Values
@@ -33,6 +32,7 @@ Let's start by importing necessary libraries.
 import numpy as np
 import pandas as pd
 ```
+
 Creating NaN values
 Let's create a numpy array and a pandas DataFrame containing NaN values.
 
@@ -51,6 +51,7 @@ Now we can see how NaN values affect arithmetic operations. For example, if we t
 ```{code-cell}
 print("Mean of numpy array:", np.mean(nan_array))
 ```
+
 This is because any arithmetic operation with NaN results in NaN. We can avoid this by using the np.nanmean function instead, which ignores NaN values
 
 ```{code-cell}
@@ -60,10 +61,12 @@ print("Mean of numpy array ignoring NaN:", np.nanmean(nan_array))
 ```{code-cell}
 assert np.nanmean(nan_array) == 3, 'np.nanmean did not work correctly!'
 ```
+
 In pandas, the mean function automatically ignores NaN values
 
 ```{code-cell}
 :tags: [hide-cell]
+
 print("Mean of pandas DataFrame columns:\n", nan_df.mean())
 ```
 
@@ -80,10 +83,13 @@ assert nan_df.mean().equals(pd.Series({'A': 3, 'B': 3.5})), 'pandas mean functio
 ```
 
 start of the output
+
 ```{code-cell}
 :tags: [remove-input, remove-output]
+
 assert nan_df.mean().equals(pd.Series({'A': 3, 'B': 3.5})), 'pandas mean function did not work correctly!'
 ```
+
 end of the output
 
 Find out more how to `hide-` or `remove-´ output [here](https://myst-nb.readthedocs.io/en/latest/render/hiding.html#remove-parts-of-cells).
@@ -91,14 +97,12 @@ Find out more how to `hide-` or `remove-´ output [here](https://myst-nb.readthe
 Use `:tags: [raises-exception]` if you want to show an error on purpose. Any other Exception will stop the documentation
 build process, as we force to `nb_execution_raise_on_error = True` in the `conf.py`.
 
-```{code-cell} ipython3
+```{code-cell}
 :tags: [raises-exception]
 
 raise ValueError("oopsie! ")
 ```
 
-
 ## Conclusion
 
 In summary, handling NaN values is important when working with data in Python. NaN values can impact the results of arithmetic operations. Both numpy and pandas provide functions to handle NaN values effectively.
-
